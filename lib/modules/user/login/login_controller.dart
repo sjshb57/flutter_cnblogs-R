@@ -39,7 +39,7 @@ class LoginController extends BaseController {
         "nonce": DateTime.now().millisecondsSinceEpoch.toString(),
       },
     );
-    webViewController?.loadUrl(urlRequest: URLRequest(url: uri));
+    webViewController?.loadUrl(urlRequest: URLRequest(url: WebUri(uri.toString())));
   }
 
   void refreshWeb() {

@@ -22,7 +22,7 @@ class WebViewPage extends GetView<AppWebViewController> {
               offstage: controller.pageError.value,
               child: InAppWebView(
                 key: controller.webViewkey,
-                initialUrlRequest: URLRequest(url: Uri.parse(controller.url)),
+                initialUrlRequest: URLRequest(url: WebUri(controller.url)),
                 initialOptions: controller.webViewGroupOptions,
                 onWebViewCreated: controller.onWebViewCreated,
                 onLoadStart: controller.onLoadStart,

@@ -1,54 +1,59 @@
 name: flutter_cnblogs
-version: 1.0.7+10007
+version: 1.0.8+10008
 description: "博客园Flutter客户端"
-environment: 
-  sdk: '>=2.18.2 <3.0.0'
 
-dependencies: 
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0"
+  flutter: ">=3.35.0"
+
+dependencies:
   # 图标
-  cupertino_icons: ^1.0.2
-  remixicon: ^1.0.0 #Remix图标
+  cupertino_icons: ^1.0.8
+  remixicon: ^1.4.1 #Remix图标
 
   # 框架、工具
-  get: ^4.6.6 #状态管理、路由管理、国际化
-  dio: ^5.3.2 #网络请求
+  get: ^4.7.2 #状态管理、路由管理、国际化
+  dio: ^5.9.0 #网络请求
   hive: 2.2.3 #持久化存储
   hive_flutter: 1.1.0 #持久化存储
-  logger: ^2.0.2 #日志
-  intl: ^0.18.1 #国际化
-  flutter_dotenv: ^5.1.0 #ENV
+  logger: ^2.6.1 #日志
+  intl: ^0.20.2 #国际化
+  flutter_dotenv: ^6.0.0 #ENV
   xpath_selector: ^3.0.2 #XPATH
   xpath_selector_html_parser: ^3.0.1 #XPATH
 
   #Widget
   flutter_staggered_grid_view: ^0.7.0 #瀑布流/GridView
-  easy_refresh: ^3.3.2+1 #下拉刷新、上拉加载
-  extended_image: ^8.1.1 #拓展Image,支持缓存
-  flutter_smart_dialog: ^4.9.4 #各种弹窗 Toast/Dialog/Popup
-  lottie: ^2.6.0 #lottie动画
-  flutter_html: ^3.0.0-beta.2 #HTML转widget
-  photo_view: ^0.14.0 #图片浏览
+  easy_refresh: ^3.4.0 #下拉刷新、上拉加载
+  extended_image: ^10.0.1 #拓展Image,支持缓存
+  flutter_smart_dialog: ^4.9.8+9 #各种弹窗 Toast/Dialog/Popup
+  lottie: ^3.3.1 #lottie动画
+  flutter_html: ^3.0.0 #HTML转widget
+  photo_view: ^0.15.0 #图片浏览
   sticky_headers: ^0.3.0+2 #吸顶
-  flutter_markdown: ^0.6.17+3 #Markdown
+  flutter_markdown: ^0.7.7+1 #Markdown
 
   #系统交互
-  package_info_plus: ^4.1.0 #包信息
-  url_launcher: ^6.1.14 #打开链接
-  share_plus: ^7.1.0 #分享
-  path_provider: ^2.1.1 #常用路径
-  cross_file: ^0.3.3+5 #跨平台文件
-  flutter_inappwebview: ^5.7.2+3 #WebView
-  permission_handler: ^11.0.0 #权限处理
-  image_gallery_saver: ^2.0.3 #图片保存到相册
+  package_info_plus: ^8.3.1 #包信息
+  url_launcher: ^6.3.2 #打开链接
+  share_plus: ^11.1.0 #分享
+  path_provider: ^2.1.5 #常用路径
+  cross_file: ^0.3.4+2 #跨平台文件
+  flutter_inappwebview: ^6.1.5 #WebView
+  permission_handler: ^12.0.1 #权限处理
+  # image_gallery_saver: ^2.0.3 #图片保存到相册
+  image_gallery_saver_plus: ^4.0.1
 
-  flutter: 
+  flutter:
     sdk: flutter
-  flutter_localizations: 
+  flutter_localizations:
     sdk: flutter
 
 
 dev_dependencies: 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0
   flutter_test: 
     sdk: flutter
 

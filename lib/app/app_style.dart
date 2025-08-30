@@ -28,7 +28,7 @@ class AppStyle {
     checkboxTheme: CheckboxThemeData(
       fillColor: MaterialStateProperty.all(AppColors.lightColorScheme.primary),
     ),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: TabBarThemeData(
       labelColor: AppColors.lightColorScheme.primary,
       unselectedLabelColor: Colors.white70,
       indicatorSize: TabBarIndicatorSize.tab,
@@ -57,7 +57,7 @@ class AppStyle {
     checkboxTheme: CheckboxThemeData(
       fillColor: MaterialStateProperty.all(AppColors.darkColorScheme.primary),
     ),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: TabBarThemeData(
       labelColor: AppColors.darkColorScheme.primary,
       unselectedLabelColor: Colors.white70,
       indicator: RectangularIndicator(

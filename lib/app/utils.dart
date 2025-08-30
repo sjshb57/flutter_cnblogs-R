@@ -6,7 +6,7 @@ import 'package:flutter_cnblogs/app/log.dart';
 import 'package:flutter_cnblogs/generated/locales.g.dart';
 import 'package:flutter_cnblogs/requests/common_request.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -330,7 +330,7 @@ class Utils {
       var cacheDir = await getTemporaryDirectory();
       var file = File(p.join(cacheDir.path, p.basename(url)));
       await file.writeAsBytes(data);
-      final result = await ImageGallerySaver.saveFile(
+      final result = await ImageGallerySaverPlus.saveFile(
         file.path,
         name: p.basename(url),
         isReturnPathOfIOS: true,
