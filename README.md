@@ -12,15 +12,12 @@
 
 - Android:
     1. 前往[Releases](https://github.com/xiaoyaocz/flutter_cnblogs/releases/latest)下载app-release.apk安装即可
-- iOS:
-    1. 前往[Releases](https://github.com/xiaoyaocz/flutter_cnblogs/releases/latest)下载ios_no_sign.ipa
-    2. 使用Sideloadly、iTools等工具自行签名安装
 
 ## 开发
 
 ## 环境
 
-Flutter：3.13.9
+Flutter：3.35.2
 
 ### 说明
 
