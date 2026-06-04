@@ -63,6 +63,11 @@ class BlogContentController extends BaseWebViewController {
       var commonScript = await getCommonScript();
 
       var style = await loadStyle();
+      // 让正文背景与 App 顶/底栏统一：深色用 surface，浅色用 scaffold 背景
+      final bg = Get.isDarkMode
+          ? Get.theme.colorScheme.surface
+          : Get.theme.scaffoldBackgroundColor;
+      style += '\nhtml,body{background-color:${_cssHex(bg)} !important;}';
       var htmlTemplate = await loadTemplate();
       htmlTemplate = htmlTemplate.replaceAll("@highlightJs", highlightScript);
       htmlTemplate = htmlTemplate.replaceAll("@commonJs", commonScript);
@@ -140,6 +145,12 @@ class BlogContentController extends BaseWebViewController {
     return await rootBundle.loadString(Get.isDarkMode
         ? 'assets/templates/blog/dark.css'
         : 'assets/templates/blog/light.css');
+  }
+
+  /// Color -> #rrggbb
+  String _cssHex(Color c) {
+    final argb = c.toARGB32();
+    return '#${(argb & 0xFFFFFF).toRadixString(16).padLeft(6, '0')}';
   }
 
   void share() {

@@ -30,47 +30,53 @@ class UserHomePage extends GetView<UserHomeController> {
                 AppStyle.vGap12,
                 // 用户名、头像
                 Obx(
-                  () => Visibility(
-                    visible: UserService.instance.logined.value,
-                    child: ListTile(
-                      leading: _buildPhoto(
-                          UserService.instance.userProfile.value?.avatar ?? ""),
-                      title: Text(
-                        UserService.instance.userProfile.value?.displayName ??
-                            "",
-                        style: const TextStyle(height: 1.0),
-                      ),
-                      subtitle: Text(LocaleKeys.user_home_seniority.trParams({
-                        "seniority": (UserService
-                                .instance.userProfile.value?.seniority ??
-                            ""),
-                      })),
-                      trailing: IconButton(
-                        onPressed: controller.logout,
-                        icon: const Icon(Remix.logout_box_r_line),
-                      ),
-                    ),
-                  ),
-                ),
-                Obx(
-                  () => Visibility(
-                    visible: !UserService.instance.logined.value,
-                    child: ListTile(
-                      leading: _buildPhoto(""),
-                      title: Text(
-                        LocaleKeys.user_home_not_login.tr,
-                        style: const TextStyle(height: 1.0),
-                      ),
-                      subtitle: Text(
-                        LocaleKeys.user_home_to_login.tr,
-                      ),
-                      trailing: const Icon(
-                        Icons.chevron_right,
-                        color: Colors.grey,
-                      ),
-                      onTap: controller.login,
-                    ),
-                  ),
+                  () => UserService.instance.logined.value
+                      ? _buildCard(
+                          context,
+                          children: [
+                            ListTile(
+                              leading: _buildPhoto(UserService.instance
+                                      .userProfile.value?.avatar ??
+                                  ""),
+                              title: Text(
+                                UserService.instance.userProfile.value
+                                        ?.displayName ??
+                                    "",
+                                style: const TextStyle(height: 1.0),
+                              ),
+                              subtitle: Text(
+                                  LocaleKeys.user_home_seniority.trParams({
+                                "seniority": (UserService.instance.userProfile
+                                        .value?.seniority ??
+                                    ""),
+                              })),
+                              trailing: IconButton(
+                                onPressed: controller.logout,
+                                icon: const Icon(Remix.logout_box_r_line),
+                              ),
+                            ),
+                          ],
+                        )
+                      : _buildCard(
+                          context,
+                          children: [
+                            ListTile(
+                              leading: _buildPhoto(""),
+                              title: Text(
+                                LocaleKeys.user_home_not_login.tr,
+                                style: const TextStyle(height: 1.0),
+                              ),
+                              subtitle: Text(
+                                LocaleKeys.user_home_to_login.tr,
+                              ),
+                              trailing: const Icon(
+                                Icons.chevron_right,
+                                color: Colors.grey,
+                              ),
+                              onTap: controller.login,
+                            ),
+                          ],
+                        ),
                 ),
                 _buildCard(
                   context,
@@ -131,7 +137,7 @@ class UserHomePage extends GetView<UserHomeController> {
                       ),
                       onTap: () {
                         launchUrlString(
-                          "https://github.com/xiaoyaocz/flutter_cnblogs",
+                          "https://github.com/sjshb57/flutter_cnblogs-R",
                           mode: LaunchMode.externalApplication,
                         );
                       },
@@ -167,45 +173,57 @@ class UserHomePage extends GetView<UserHomeController> {
   Widget _buildPhoto(String? photo) {
     if (photo == null || photo.isEmpty) {
       return Container(
-        width: 56,
-        height: 56,
-        decoration: BoxDecoration(
+        width: 64,
+        height: 64,
+        decoration: const BoxDecoration(
           color: Colors.lightBlue,
-          borderRadius: BorderRadius.circular(56),
+          shape: BoxShape.circle,
         ),
         child: const Icon(
           Remix.user_fill,
           color: Colors.white,
-          size: 24,
+          size: 30,
         ),
       );
     }
     return Container(
-      width: 56,
-      height: 56,
-      decoration: BoxDecoration(
+      width: 64,
+      height: 64,
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(
         color: Colors.lightBlue,
-        borderRadius: BorderRadius.circular(56),
+        shape: BoxShape.circle,
       ),
       child: NetImage(
         photo,
-        width: 56,
-        height: 56,
-        borderRadius: 56,
+        width: 58,
+        height: 58,
+        borderRadius: 58,
       ),
     );
   }
 
   Widget _buildCard(BuildContext context, {required List<Widget> children}) {
+    final theme = Theme.of(context);
     return Container(
-      margin: AppStyle.edgeInsetsH12.copyWith(top: 12),
+      margin: AppStyle.edgeInsetsH16.copyWith(top: 16),
       child: Material(
-        color: Theme.of(context).cardColor,
-        borderRadius: AppStyle.radius8,
+        color: theme.colorScheme.surfaceContainerHighest
+            .withValues(alpha: theme.brightness == Brightness.dark ? .4 : .6),
+        borderRadius: AppStyle.radius12,
+        clipBehavior: Clip.antiAlias,
         child: Theme(
-          data: Theme.of(context).copyWith(
+          data: theme.copyWith(
+            iconTheme: theme.iconTheme.copyWith(size: 24),
             listTileTheme: ListTileThemeData(
-              shape: RoundedRectangleBorder(borderRadius: AppStyle.radius8),
+              shape:
+                  RoundedRectangleBorder(borderRadius: AppStyle.radius12),
+              minVerticalPadding: 18,
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+              titleTextStyle: theme.textTheme.titleMedium?.copyWith(
+                fontSize: 16,
+              ),
             ),
           ),
           child: Column(

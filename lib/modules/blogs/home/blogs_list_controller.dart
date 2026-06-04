@@ -18,6 +18,8 @@ class BlogsListController extends BasePageController<BlogListItemModel> {
       return await blogsRequest.getPicked(pageIndex: page);
     } else if (title == LocaleKeys.blogs_home_mostread) {
       return await blogsRequest.getMostRead(pageIndex: page);
+    } else if (title == LocaleKeys.blogs_home_popular) {
+      return await blogsRequest.getMostPopular(pageIndex: page);
     } else {
       return await blogsRequest.getSitehome(pageIndex: page);
     }

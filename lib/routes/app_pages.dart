@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_inlined_adds
 
+import 'package:flutter_cnblogs/modules/blogs/category_posts/category_posts_controller.dart';
+import 'package:flutter_cnblogs/modules/blogs/category_posts/category_posts_page.dart';
 import 'package:flutter_cnblogs/modules/blogs/comment/blog_comment_controller.dart';
 import 'package:flutter_cnblogs/modules/blogs/comment/blog_comment_page.dart';
 import 'package:flutter_cnblogs/modules/blogs/content/blog_content_page.dart';
@@ -84,6 +86,17 @@ class AppPages {
         preventDuplicates: false,
         page: () => BlogContentPage(
           url: Get.parameters["url"].toString(),
+        ),
+      ),
+      // 分类文章列表
+      GetPage(
+        name: RoutePath.kCategoryPosts,
+        page: () => const CategoryPostsPage(),
+        binding: BindingsBuilder.put(
+          () => CategoryPostsController(
+            name: Get.parameters["name"].toString(),
+            path: Get.parameters["path"].toString(),
+          ),
         ),
       ),
       // 知识库

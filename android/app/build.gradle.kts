@@ -28,19 +28,15 @@ android {
 
     buildTypes {
         release {
-            // 开启 R8：摇树/优化 + 资源压缩，精简 APK 体积
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            isShrinkResources = false
             signingConfig = signingConfigs.getByName("debug")
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
         }
     }
 
     packaging {
         jniLibs {
+            useLegacyPackaging = true
             excludes += setOf("lib/armeabi-v7a/**", "lib/x86_64/**")
             pickFirsts += "lib/arm64-v8a/**"
         }

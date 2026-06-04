@@ -5,6 +5,7 @@ import 'package:flutter_cnblogs/app/controller/base_controller.dart';
 import 'package:flutter_cnblogs/app/event_bus.dart';
 import 'package:flutter_cnblogs/generated/locales.g.dart';
 import 'package:flutter_cnblogs/modules/blogs/home/blogs_list_controller.dart';
+import 'package:flutter_cnblogs/modules/blogs/home/category/blogs_category_controller.dart';
 import 'package:flutter_cnblogs/modules/blogs/home/knowledge/blogs_knowledge_controller.dart';
 
 import 'package:flutter_cnblogs/requests/blogs_request.dart';
@@ -16,15 +17,22 @@ class BlogsHomeController extends GetxController
   final BlogsRequest blogsRequest = BlogsRequest();
   late TabController tabController;
   BlogsHomeController() {
-    tabController = TabController(length: tabs.length, vsync: this);
+    final initialIndex = tabs.indexOf(LocaleKeys.blogs_home_new);
+    tabController = TabController(
+      length: tabs.length,
+      vsync: this,
+      initialIndex: initialIndex < 0 ? 0 : initialIndex,
+    );
   }
 
   final tabs = [
+    LocaleKeys.blogs_home_category,
     LocaleKeys.blogs_home_new,
-    LocaleKeys.blogs_home_mostread,
-    LocaleKeys.blogs_home_mostliked,
     LocaleKeys.blogs_home_picked,
     LocaleKeys.blogs_home_knowledge,
+    LocaleKeys.blogs_home_mostread,
+    LocaleKeys.blogs_home_mostliked,
+    LocaleKeys.blogs_home_popular,
   ];
 
   StreamSubscription<dynamic>? streamSubscription;
@@ -42,6 +50,8 @@ class BlogsHomeController extends GetxController
     for (var tag in tabs) {
       if (tag == LocaleKeys.blogs_home_knowledge) {
         Get.put(BlogsKnowledgeController());
+      } else if (tag == LocaleKeys.blogs_home_category) {
+        Get.put(BlogsCategoryController());
       } else {
         Get.put(BlogsListController(tag), tag: tag);
       }
@@ -52,11 +62,16 @@ class BlogsHomeController extends GetxController
 
   void refreshOrScrollTop() {
     var tabIndex = tabController.index;
+    final tag = tabs[tabIndex];
+    if (tag == LocaleKeys.blogs_home_category) {
+      // 分类页无列表，不处理
+      return;
+    }
     BasePageController controller;
-    if (tabs[tabIndex] == LocaleKeys.blogs_home_knowledge) {
+    if (tag == LocaleKeys.blogs_home_knowledge) {
       controller = Get.find<BlogsKnowledgeController>();
     } else {
-      controller = Get.find<BlogsListController>(tag: tabs[tabIndex]);
+      controller = Get.find<BlogsListController>(tag: tag);
     }
     controller.scrollToTopOrRefresh();
   }

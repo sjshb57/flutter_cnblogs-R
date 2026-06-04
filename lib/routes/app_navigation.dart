@@ -33,6 +33,18 @@ class AppNavigator {
     );
   }
 
+  /// 跳转至分类文章列表
+  static Future toCategoryPosts(
+      {required String name, required String path}) async {
+    return await Get.toNamed(
+      RoutePath.kCategoryPosts,
+      parameters: {
+        "name": name,
+        "path": path,
+      },
+    );
+  }
+
   /// 跳转至博文评论
   static Future toBlogComment({
     required String blogApp,

@@ -51,6 +51,8 @@ class LocaleKeys {
   static const blogs_home_new = 'blogs_home_new';
   static const blogs_home_mostread = 'blogs_home_mostread';
   static const blogs_home_mostliked = 'blogs_home_mostliked';
+  static const blogs_home_popular = 'blogs_home_popular';
+  static const blogs_home_category = 'blogs_home_category';
   static const blogs_home_picked = 'blogs_home_picked';
   static const blogs_home_knowledge = 'blogs_home_knowledge';
   static const blogs_home_posttime = 'blogs_home_posttime';
@@ -181,6 +183,8 @@ class Locales {
     'blogs_home_new': 'New',
     'blogs_home_mostread': 'MostRead',
     'blogs_home_mostliked': 'Recommend',
+    'blogs_home_popular': 'Popular',
+    'blogs_home_category': 'Category',
     'blogs_home_picked': 'Picked',
     'blogs_home_knowledge': 'Knowledge',
     'blogs_home_posttime': 'Published on  @time',
@@ -306,7 +310,9 @@ class Locales {
     'indexed_user': '我的',
     'blogs_home_new': '最新',
     'blogs_home_mostliked': '10天推荐排行',
-    'blogs_home_mostread': '24小时阅读排行',
+    'blogs_home_popular': '15天热门博文',
+    'blogs_home_category': '分类',
+    'blogs_home_mostread': '48小时阅读排行',
     'blogs_home_picked': '精华',
     'blogs_home_knowledge': '知识库',
     'blogs_home_posttime': '发表于 @time',

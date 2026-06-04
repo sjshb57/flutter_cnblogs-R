@@ -39,6 +39,7 @@ class AppStyle {
     tabBarTheme: TabBarThemeData(
       labelColor: AppColors.lightColorScheme.primary,
       unselectedLabelColor: Colors.white70,
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: RectangularIndicator(
         color: Colors.white,
@@ -69,6 +70,7 @@ class AppStyle {
     tabBarTheme: TabBarThemeData(
       labelColor: AppColors.darkColorScheme.primary,
       unselectedLabelColor: Colors.white70,
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       indicator: RectangularIndicator(
         color: Colors.white.withValues(alpha: .2),
         topLeftRadius: 8,

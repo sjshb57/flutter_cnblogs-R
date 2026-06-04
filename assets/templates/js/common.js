@@ -1,6 +1,26 @@
 window.onload = function () {
+    restoreLazyImages();
     initImageClickEvent();
     initHighlightCode();
+}
+
+// 还原懒加载图片：博客园正文图片真实地址在 data-src，需写回 src 才能显示
+function restoreLazyImages() {
+    try {
+        var imgs = document.getElementsByTagName("img");
+        for (let i = 0; i < imgs.length; i++) {
+            var el = imgs[i];
+            var ds = el.getAttribute("data-src");
+            var cur = el.getAttribute("src");
+            if (ds && (!cur || cur.trim() === "")) {
+                el.setAttribute("src", ds);
+            }
+            el.removeAttribute("loading");
+            el.classList.remove("lazyload");
+        }
+    } catch (e) {
+        console.log("restoreLazyImages error:" + e);
+    }
 }
 
 // 初始化代码高亮

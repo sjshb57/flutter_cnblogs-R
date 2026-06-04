@@ -3,6 +3,7 @@ import 'package:flutter_cnblogs/app/app_style.dart';
 import 'package:flutter_cnblogs/generated/locales.g.dart';
 import 'package:flutter_cnblogs/modules/blogs/home/blogs_home_controller.dart';
 import 'package:flutter_cnblogs/modules/blogs/home/blogs_list_view.dart';
+import 'package:flutter_cnblogs/modules/blogs/home/category/blogs_category_view.dart';
 import 'package:flutter_cnblogs/modules/blogs/home/knowledge/blogs_knowledge_view.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,7 @@ class BlogsHomePage extends GetView<BlogsHomeController> {
           child: TabBar(
             controller: controller.tabController,
             padding: EdgeInsets.zero,
+            dividerColor: Colors.transparent,
             tabs: controller.tabs
                 .map(
                   (e) => Tab(
@@ -38,6 +40,13 @@ class BlogsHomePage extends GetView<BlogsHomeController> {
             icon: const Icon(Icons.search),
           )
         ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            height: 1,
+            color: Colors.white.withValues(alpha: .25),
+          ),
+        ),
       ),
       body: TabBarView(
         controller: controller.tabController,
@@ -45,9 +54,11 @@ class BlogsHomePage extends GetView<BlogsHomeController> {
             .map(
               (e) => e == LocaleKeys.blogs_home_knowledge
                   ? const BlogsKnowledgeView()
-                  : BlogsListView(
-                      e,
-                    ),
+                  : e == LocaleKeys.blogs_home_category
+                      ? const BlogsCategoryView()
+                      : BlogsListView(
+                          e,
+                        ),
             )
             .toList(),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cnblogs/app/app_style.dart';
 import 'package:flutter_cnblogs/app/controller/app_settings_controller.dart';
 import 'package:flutter_cnblogs/app/utils.dart';
 import 'package:flutter_cnblogs/generated/locales.g.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_cnblogs/routes/app_navigation.dart';
 import 'package:flutter_cnblogs/routes/route_path.dart';
 import 'package:flutter_cnblogs/services/user_service.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class UserHomeController extends GetxController {
   final AppSettingsController settingController =
@@ -68,11 +70,43 @@ class UserHomeController extends GetxController {
         height: 48,
       ),
       applicationName: LocaleKeys.app_name.tr,
-      applicationVersion: LocaleKeys.app_slogan.tr,
-      applicationLegalese: LocaleKeys.user_home_about_msg.trParams({
-        "version": Utils.packageInfo.version,
-      }),
+      applicationVersion: 'v${Utils.packageInfo.version}',
+      applicationLegalese: '© 2026 sjshb57 · 基于 MIT 协议开源',
+      children: [
+        AppStyle.vGap12,
+        const Text(
+          '使用 Flutter 编写的博客园第三方客户端。\n'
+          '本项目 fork 自 xiaoyaocz/flutter_cnblogs，'
+          '在其基础上做了现代化适配与功能修复。',
+          style: TextStyle(fontSize: 13, height: 1.5),
+        ),
+        AppStyle.vGap12,
+        _aboutLink('本项目主页', 'https://github.com/sjshb57/flutter_cnblogs-R'),
+        _aboutLink('原项目', 'https://github.com/xiaoyaocz/flutter_cnblogs'),
+        _aboutLink('数据来源', 'https://www.cnblogs.com'),
+      ],
     ));
+  }
+
+  Widget _aboutLink(String label, String url) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: InkWell(
+        onTap: () => launchUrlString(url, mode: LaunchMode.externalApplication),
+        child: Row(
+          children: [
+            Text('$label：', style: const TextStyle(fontSize: 13)),
+            Expanded(
+              child: Text(
+                url,
+                style: const TextStyle(fontSize: 13, color: Colors.blue),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   /// 检查更新

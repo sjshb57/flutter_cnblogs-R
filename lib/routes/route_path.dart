@@ -9,6 +9,9 @@ class RoutePath {
   /// 博客内容
   static const kBlogContent = "/blogs/content";
 
+  /// 分类文章列表
+  static const kCategoryPosts = "/blogs/category";
+
   /// 博文评论
   static const kBlogComment = "/blogs/comment";
 
