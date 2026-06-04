@@ -45,7 +45,7 @@ class BlogListItemModel {
   String blogapp;
   String avatar;
   String postdate;
-  DateTime get postDateTime => DateTime.parse(postdate);
+  DateTime get postDateTime => DateTime.tryParse(postdate) ?? DateTime.now();
   int viewcount;
   int commentcount;
   int diggcount;

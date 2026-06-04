@@ -53,7 +53,7 @@ class BlogsHomeController extends GetxController
   void refreshOrScrollTop() {
     var tabIndex = tabController.index;
     BasePageController controller;
-    if (tabIndex == 4) {
+    if (tabs[tabIndex] == LocaleKeys.blogs_home_knowledge) {
       controller = Get.find<BlogsKnowledgeController>();
     } else {
       controller = Get.find<BlogsListController>(tag: tabs[tabIndex]);

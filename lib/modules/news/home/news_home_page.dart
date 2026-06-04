@@ -25,6 +25,7 @@ class NewsHomePage extends GetView<NewsHomeController> {
                 .toList(),
             labelPadding: AppStyle.edgeInsetsH20,
             isScrollable: true,
+            tabAlignment: TabAlignment.start,
             indicatorSize: TabBarIndicatorSize.tab,
           ),
         ),

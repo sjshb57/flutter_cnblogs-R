@@ -24,6 +24,9 @@ class RectangularIndicator extends Decoration {
   /// Vertical padding of the indicator, default set to 0
   final double verticalPadding;
 
+  /// 胶囊整体垂直偏移，正值向上移动，用于贴合中文字形视觉重心，默认 0
+  final double verticalOffset;
+
   /// [PagingStyle] determines if the indicator should be fill or stroke, default to fill
   final PaintingStyle paintingStyle;
 
@@ -38,6 +41,7 @@ class RectangularIndicator extends Decoration {
     this.color = Colors.black,
     this.horizontalPadding = 0,
     this.verticalPadding = 0,
+    this.verticalOffset = 0,
     this.paintingStyle = PaintingStyle.fill,
     this.strokeWidth = 2,
   });
@@ -53,6 +57,7 @@ class RectangularIndicator extends Decoration {
       topLeftRadius: topLeftRadius,
       topRightRadius: topRightRadius,
       verticalPadding: verticalPadding,
+      verticalOffset: verticalOffset,
       paintingStyle: paintingStyle,
       strokeWidth: strokeWidth,
     );
@@ -68,6 +73,7 @@ class MyCustomPainter extends BoxPainter {
   final Color color;
   final double horizontalPadding;
   final double verticalPadding;
+  final double verticalOffset;
   final PaintingStyle paintingStyle;
   final double strokeWidth;
 
@@ -81,6 +87,7 @@ class MyCustomPainter extends BoxPainter {
     required this.color,
     required this.horizontalPadding,
     required this.verticalPadding,
+    required this.verticalOffset,
     required this.paintingStyle,
     required this.strokeWidth,
   }) : super(onChanged);
@@ -101,8 +108,8 @@ class MyCustomPainter extends BoxPainter {
     Size mysize = Size(configuration.size!.width - (horizontalPadding * 2),
         configuration.size!.height - (2 * verticalPadding));
 
-    Offset myoffset =
-        Offset(offset.dx + (horizontalPadding), offset.dy + verticalPadding);
+    Offset myoffset = Offset(offset.dx + (horizontalPadding),
+        offset.dy + verticalPadding - verticalOffset);
     final Rect rect = myoffset & mysize;
     final Paint paint = Paint();
     paint.color = color;

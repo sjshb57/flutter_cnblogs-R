@@ -42,7 +42,7 @@ dependencies:
   share_plus: ^11.1.0 #分享
   path_provider: ^2.1.5 #常用路径
   cross_file: ^0.3.4+2 #跨平台文件
-  flutter_inappwebview: ^6.1.5 #WebView
+  flutter_inappwebview: 6.2.0-beta.3 #WebView
   permission_handler: ^12.0.1 #权限处理
   # image_gallery_saver: ^2.0.3 #图片保存到相册
   image_gallery_saver_plus: ^4.0.1

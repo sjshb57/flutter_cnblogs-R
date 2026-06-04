@@ -306,7 +306,7 @@ class Locales {
     'indexed_user': '我的',
     'blogs_home_new': '最新',
     'blogs_home_mostliked': '10天推荐排行',
-    'blogs_home_mostread': '48小时阅读排行',
+    'blogs_home_mostread': '24小时阅读排行',
     'blogs_home_picked': '精华',
     'blogs_home_knowledge': '知识库',
     'blogs_home_posttime': '发表于 @time',

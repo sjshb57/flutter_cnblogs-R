@@ -25,6 +25,7 @@ class StatusesHomePage extends GetView<StatusesHomeController> {
                 .toList(),
             labelPadding: AppStyle.edgeInsetsH20,
             isScrollable: true,
+            tabAlignment: TabAlignment.start,
             indicatorSize: TabBarIndicatorSize.tab,
           ),
         ),

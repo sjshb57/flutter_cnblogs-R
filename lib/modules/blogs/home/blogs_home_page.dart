@@ -28,6 +28,7 @@ class BlogsHomePage extends GetView<BlogsHomeController> {
                 .toList(),
             labelPadding: AppStyle.edgeInsetsH20,
             isScrollable: true,
+            tabAlignment: TabAlignment.start,
             indicatorSize: TabBarIndicatorSize.tab,
           ),
         ),
