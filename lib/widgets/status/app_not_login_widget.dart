@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class AppNotLoginWidget extends StatelessWidget {
   final Function()? onLoginSuccess;
 
-  const AppNotLoginWidget({this.onLoginSuccess, Key? key}) : super(key: key);
+  const AppNotLoginWidget({this.onLoginSuccess, super.key});
 
   @override
   Widget build(BuildContext context) {

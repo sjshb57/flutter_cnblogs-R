@@ -9,7 +9,7 @@ import 'package:remixicon/remixicon.dart';
 class NewsItemWidget extends StatelessWidget {
   final NewsListItemModel item;
 
-  const NewsItemWidget(this.item, {Key? key}) : super(key: key);
+  const NewsItemWidget(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {

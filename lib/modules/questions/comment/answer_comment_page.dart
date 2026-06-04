@@ -8,7 +8,7 @@ import 'package:flutter_cnblogs/widgets/page_list_view.dart';
 import 'package:get/get.dart';
 
 class AnswerCommentPage extends GetView<AnswerCommentController> {
-  const AnswerCommentPage({Key? key}) : super(key: key);
+  const AnswerCommentPage({super.key});
 
   @override
   Widget build(BuildContext context) {

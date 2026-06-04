@@ -6,7 +6,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,10 @@ class LoginPage extends GetView<LoginController> {
               offstage: controller.pageError.value,
               child: InAppWebView(
                 key: controller.webViewkey,
-                initialOptions: controller.webViewGroupOptions,
+                initialSettings: controller.webViewSettings,
                 onWebViewCreated: controller.onWebViewCreated,
                 onLoadStart: controller.onLoadStart,
-                onLoadError: controller.onLoadError,
+                onReceivedError: controller.onReceivedError,
                 onLoadStop: controller.onLoadStop,
                 shouldOverrideUrlLoading: controller.shouldOverrideUrlLoading,
               ),

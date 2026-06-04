@@ -6,7 +6,7 @@ import 'package:flutter_cnblogs/modules/questions/home/questions_list_view.dart'
 import 'package:get/get.dart';
 
 class QuestionsHomePage extends GetView<QuestionsHomeController> {
-  const QuestionsHomePage({Key? key}) : super(key: key);
+  const QuestionsHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

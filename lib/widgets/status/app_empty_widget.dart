@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class AppEmptyWidget extends StatelessWidget {
   final Function()? onRefresh;
-  const AppEmptyWidget({this.onRefresh, Key? key}) : super(key: key);
+  const AppEmptyWidget({this.onRefresh, super.key});
 
   @override
   Widget build(BuildContext context) {

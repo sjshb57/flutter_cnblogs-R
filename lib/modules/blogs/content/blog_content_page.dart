@@ -9,7 +9,7 @@ import 'package:remixicon/remixicon.dart';
 
 class BlogContentPage extends StatelessWidget {
   final String url;
-  const BlogContentPage({required this.url, Key? key}) : super(key: key);
+  const BlogContentPage({required this.url, super.key});
   //GetView+Tag的方式好像有BUG,手动添加控制器
   BlogContentController get controller => Get.put(
         BlogContentController(
@@ -48,7 +48,7 @@ class BlogContentPage extends StatelessWidget {
         children: [
           InAppWebView(
             key: controller.webViewkey,
-            initialOptions: controller.webViewGroupOptions,
+            initialSettings: controller.webViewSettings,
             onWebViewCreated: controller.onWebViewCreated,
             shouldOverrideUrlLoading: controller.shouldOverrideUrlLoading,
           ),

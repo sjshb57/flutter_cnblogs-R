@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class StatusesDetailPage extends GetView<StatusesDetailController> {
-  const StatusesDetailPage({Key? key}) : super(key: key);
+  const StatusesDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WebViewPage extends GetView<AppWebViewController> {
-  const WebViewPage({Key? key}) : super(key: key);
+  const WebViewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +23,10 @@ class WebViewPage extends GetView<AppWebViewController> {
               child: InAppWebView(
                 key: controller.webViewkey,
                 initialUrlRequest: URLRequest(url: WebUri(controller.url)),
-                initialOptions: controller.webViewGroupOptions,
+                initialSettings: controller.webViewSettings,
                 onWebViewCreated: controller.onWebViewCreated,
                 onLoadStart: controller.onLoadStart,
-                onLoadError: controller.onLoadError,
+                onReceivedError: controller.onReceivedError,
                 onLoadStop: controller.onLoadStop,
                 onTitleChanged: controller.onTitleChanged,
                 shouldOverrideUrlLoading: (controller, navigationAction) async {
@@ -100,9 +100,8 @@ class WebViewPage extends GetView<AppWebViewController> {
                   Expanded(
                     child: IconButton(
                       onPressed: () async {
-                        Share.share(
-                            (await controller.webViewController?.getUrl())
-                                .toString());
+                        SharePlus.instance.share(ShareParams(text: (await controller.webViewController?.getUrl())
+                                .toString()));
                       },
                       icon: const Icon(
                         Icons.share,

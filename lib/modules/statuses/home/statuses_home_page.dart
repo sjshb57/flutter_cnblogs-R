@@ -5,7 +5,7 @@ import 'package:flutter_cnblogs/modules/statuses/home/statuses_list_view.dart';
 import 'package:get/get.dart';
 
 class StatusesHomePage extends GetView<StatusesHomeController> {
-  const StatusesHomePage({Key? key}) : super(key: key);
+  const StatusesHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -184,7 +184,7 @@ class Utils {
         ],
       ),
       // barrierColor:
-      //     Get.isDarkMode ? Colors.grey.withOpacity(.3) : Colors.black38,
+      //     Get.isDarkMode ? Colors.grey.withValues(alpha: .3) : Colors.black38,
     );
     return result;
   }
@@ -197,18 +197,23 @@ class Utils {
     var result = await Get.dialog(
       SimpleDialog(
         title: Text(title),
-        children: contents
-            .map(
-              (e) => RadioListTile<T>(
-                title: Text(e.toString()),
-                value: e,
-                groupValue: value,
-                onChanged: (e) {
-                  Get.back(result: e);
-                },
-              ),
-            )
-            .toList(),
+        children: [
+          RadioGroup<T>(
+            groupValue: value,
+            onChanged: (e) => Get.back(result: e),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: contents
+                  .map(
+                    (e) => RadioListTile<T>(
+                      title: Text(e.toString()),
+                      value: e,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ],
       ),
     );
     return result;
@@ -222,18 +227,23 @@ class Utils {
     var result = await Get.dialog(
       SimpleDialog(
         title: Text(title),
-        children: contents.keys
-            .map(
-              (e) => RadioListTile<T>(
-                title: Text((contents[e] ?? '-').tr),
-                value: e,
-                groupValue: value,
-                onChanged: (e) {
-                  Get.back(result: e);
-                },
-              ),
-            )
-            .toList(),
+        children: [
+          RadioGroup<T>(
+            groupValue: value,
+            onChanged: (e) => Get.back(result: e),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: contents.keys
+                  .map(
+                    (e) => RadioListTile<T>(
+                      title: Text((contents[e] ?? '-').tr),
+                      value: e,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ],
       ),
     );
     return result;

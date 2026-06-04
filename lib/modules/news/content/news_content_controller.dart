@@ -66,7 +66,7 @@ class NewsContentController extends BaseWebViewController {
   }
 
   void share() {
-    Share.share('《${item.title}》\r\nhttps://news.cnblogs.com/n/${item.id}/');
+    SharePlus.instance.share(ShareParams(text: '《${item.title}》\r\nhttps://news.cnblogs.com/n/${item.id}/'));
   }
 
   void openBrowser() {

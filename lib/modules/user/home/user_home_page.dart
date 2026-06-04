@@ -11,7 +11,7 @@ import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class UserHomePage extends GetView<UserHomeController> {
-  const UserHomePage({Key? key}) : super(key: key);
+  const UserHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

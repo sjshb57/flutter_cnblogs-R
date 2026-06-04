@@ -20,6 +20,7 @@ dependencies:
   hive_flutter: 1.1.0 #持久化存储
   logger: ^2.6.1 #日志
   intl: ^0.20.2 #国际化
+  path: ^1.9.1 #路径处理
   flutter_dotenv: ^6.0.0 #ENV
   xpath_selector: ^3.0.2 #XPATH
   xpath_selector_html_parser: ^3.0.1 #XPATH
@@ -50,7 +51,6 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
 
 dev_dependencies: 
   flutter_lints: ^6.0.0

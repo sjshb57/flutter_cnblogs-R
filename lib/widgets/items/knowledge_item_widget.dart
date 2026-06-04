@@ -10,7 +10,7 @@ import 'package:remixicon/remixicon.dart';
 class KnowledgeItemWidget extends StatelessWidget {
   final KnowledgeListItemModel item;
 
-  const KnowledgeItemWidget(this.item, {Key? key}) : super(key: key);
+  const KnowledgeItemWidget(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {

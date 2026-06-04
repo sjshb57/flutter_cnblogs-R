@@ -16,8 +16,8 @@ class StatusesItemWidget extends StatelessWidget {
   const StatusesItemWidget(
     this.item, {
     this.onDelete,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

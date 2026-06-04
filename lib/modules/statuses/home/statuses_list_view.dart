@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class StatusesListView extends StatelessWidget {
   final String tag;
-  const StatusesListView(this.tag, {Key? key}) : super(key: key);
+  const StatusesListView(this.tag, {super.key});
   StatusesListController get controller =>
       Get.find<StatusesListController>(tag: tag);
   @override

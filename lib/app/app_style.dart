@@ -4,12 +4,14 @@ import 'package:flutter_cnblogs/widgets/rectangular_indicator.dart';
 import 'package:get/get.dart';
 
 class AppColors {
-  static ColorScheme lightColorScheme = ColorScheme.fromSwatch(
-    primarySwatch: Colors.blue,
+  static const _seedColor = Color(0xff2196f3); // Material Blue
+
+  static ColorScheme lightColorScheme = ColorScheme.fromSeed(
+    seedColor: _seedColor,
     brightness: Brightness.light,
   );
   static ColorScheme darkColorScheme = ColorScheme.fromSeed(
-    seedColor: const Color(0xff3498db),
+    seedColor: _seedColor,
     brightness: Brightness.dark,
   );
 }
@@ -17,23 +19,29 @@ class AppColors {
 class AppStyle {
   static ThemeData lightTheme = ThemeData(
     colorScheme: AppColors.lightColorScheme,
-    appBarTheme: const AppBarTheme(
+    // 显式设置 AppBar 为主色背景，与截图一致，同时让白色 Tab 文字可见
+    appBarTheme: AppBarTheme(
       elevation: 0,
       centerTitle: true,
+      backgroundColor: AppColors.lightColorScheme.primary,
+      foregroundColor: Colors.white,
+      iconTheme: const IconThemeData(color: Colors.white),
+      actionsIconTheme: const IconThemeData(color: Colors.white),
+      systemOverlayStyle: SystemUiOverlayStyle.light,
     ),
     scaffoldBackgroundColor: const Color(0xfffafafa),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.all(AppColors.lightColorScheme.primary),
+      fillColor: WidgetStateProperty.all(AppColors.lightColorScheme.primary),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(AppColors.lightColorScheme.primary),
+      fillColor: WidgetStateProperty.all(AppColors.lightColorScheme.primary),
     ),
     tabBarTheme: TabBarThemeData(
-      labelColor: AppColors.lightColorScheme.primary,
+      labelColor: Colors.white,
       unselectedLabelColor: Colors.white70,
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: RectangularIndicator(
-        color: Colors.white.withOpacity(.8),
+        color: Colors.white.withValues(alpha: .8),
         topLeftRadius: 24,
         bottomLeftRadius: 24,
         topRightRadius: 24,
@@ -44,7 +52,7 @@ class AppStyle {
     ),
   );
 
-  static ThemeData darkTheme = ThemeData.dark().copyWith(
+  static ThemeData darkTheme = ThemeData(
     colorScheme: AppColors.darkColorScheme,
     appBarTheme: const AppBarTheme(
       elevation: 0,
@@ -52,16 +60,16 @@ class AppStyle {
       centerTitle: true,
     ),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.all(AppColors.darkColorScheme.primary),
+      fillColor: WidgetStateProperty.all(AppColors.darkColorScheme.primary),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(AppColors.darkColorScheme.primary),
+      fillColor: WidgetStateProperty.all(AppColors.darkColorScheme.primary),
     ),
     tabBarTheme: TabBarThemeData(
       labelColor: AppColors.darkColorScheme.primary,
       unselectedLabelColor: Colors.white70,
       indicator: RectangularIndicator(
-        color: Colors.white.withOpacity(.2),
+        color: Colors.white.withValues(alpha: .2),
         topLeftRadius: 24,
         bottomLeftRadius: 24,
         topRightRadius: 24,
@@ -71,47 +79,21 @@ class AppStyle {
       ),
     ),
   );
-  static const vGap4 = SizedBox(
-    height: 4,
-  );
-  static const vGap8 = SizedBox(
-    height: 8,
-  );
-  static const vGap12 = SizedBox(
-    height: 12,
-  );
-  static const vGap24 = SizedBox(
-    height: 24,
-  );
-  static const vGap32 = SizedBox(
-    height: 32,
-  );
-  static const vGap48 = SizedBox(
-    height: 48,
-  );
 
-  static const hGap4 = SizedBox(
-    width: 4,
-  );
-  static const hGap8 = SizedBox(
-    width: 8,
-  );
-  static const hGap12 = SizedBox(
-    width: 12,
-  );
-  static const hGap16 = SizedBox(
-    width: 16,
-  );
+  static const vGap4 = SizedBox(height: 4);
+  static const vGap8 = SizedBox(height: 8);
+  static const vGap12 = SizedBox(height: 12);
+  static const vGap24 = SizedBox(height: 24);
+  static const vGap32 = SizedBox(height: 32);
+  static const vGap48 = SizedBox(height: 48);
 
-  static const hGap24 = SizedBox(
-    width: 24,
-  );
-  static const hGap32 = SizedBox(
-    width: 32,
-  );
-  static const hGap48 = SizedBox(
-    width: 48,
-  );
+  static const hGap4 = SizedBox(width: 4);
+  static const hGap8 = SizedBox(width: 8);
+  static const hGap12 = SizedBox(width: 12);
+  static const hGap16 = SizedBox(width: 16);
+  static const hGap24 = SizedBox(width: 24);
+  static const hGap32 = SizedBox(width: 32);
+  static const hGap48 = SizedBox(width: 48);
 
   static const edgeInsetsH4 = EdgeInsets.symmetric(horizontal: 4);
   static const edgeInsetsH8 = EdgeInsets.symmetric(horizontal: 8);

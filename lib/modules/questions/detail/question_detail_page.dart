@@ -14,8 +14,7 @@ import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class QuestionDetailPage extends StatelessWidget {
   final int questionId;
-  const QuestionDetailPage({required this.questionId, Key? key})
-      : super(key: key);
+  const QuestionDetailPage({required this.questionId, super.key});
 
   QuestionDetailController get controller => Get.put(
         QuestionDetailController(
@@ -163,7 +162,7 @@ class QuestionDetailPage extends StatelessWidget {
                             (e) => Container(
                               decoration: BoxDecoration(
                                 borderRadius: AppStyle.radius4,
-                                color: Colors.grey.withOpacity(.1),
+                                color: Colors.grey.withValues(alpha: .1),
                               ),
                               padding: AppStyle.edgeInsetsH8
                                   .copyWith(top: 4, bottom: 4),
@@ -207,7 +206,7 @@ class QuestionDetailPage extends StatelessWidget {
                       color: Theme.of(context).scaffoldBackgroundColor,
                       border: Border.symmetric(
                         horizontal: BorderSide(
-                          color: Colors.grey.withOpacity(.2),
+                          color: Colors.grey.withValues(alpha: .2),
                         ),
                       ),
                     ),
@@ -231,7 +230,7 @@ class QuestionDetailPage extends StatelessWidget {
                         },
                         separatorBuilder: (_, i) {
                           return Divider(
-                            color: Colors.grey.withOpacity(.2),
+                            color: Colors.grey.withValues(alpha: .2),
                             height: 1,
                           );
                         },

@@ -7,7 +7,7 @@ import 'package:remixicon/remixicon.dart';
 
 class AnswerCommentItemWidget extends StatelessWidget {
   final AnswerCommentListItemModel item;
-  const AnswerCommentItemWidget(this.item, {Key? key}) : super(key: key);
+  const AnswerCommentItemWidget(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class AnswerCommentItemWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: AppStyle.radius24,
                     border: Border.all(
-                      color: Colors.grey.withOpacity(.2),
+                      color: Colors.grey.withValues(alpha: .2),
                     ),
                   ),
                   child: const Icon(

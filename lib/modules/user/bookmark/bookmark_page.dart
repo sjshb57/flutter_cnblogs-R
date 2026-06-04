@@ -7,7 +7,7 @@ import 'package:flutter_cnblogs/widgets/page_list_view.dart';
 import 'package:get/get.dart';
 
 class BookmarkPage extends GetView<BookmarkController> {
-  const BookmarkPage({Key? key}) : super(key: key);
+  const BookmarkPage({super.key});
 
   @override
   Widget build(BuildContext context) {

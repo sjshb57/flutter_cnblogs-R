@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class NewsListView extends StatelessWidget {
   final String tag;
-  const NewsListView(this.tag, {Key? key}) : super(key: key);
+  const NewsListView(this.tag, {super.key});
   NewsListController get controller => Get.find<NewsListController>(tag: tag);
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class NewsListView extends StatelessWidget {
         },
         separatorBuilder: ((context, index) => Divider(
               height: 12,
-              color: Colors.grey.withOpacity(.2),
+              color: Colors.grey.withValues(alpha: .2),
               endIndent: 8,
               indent: 8,
             )),

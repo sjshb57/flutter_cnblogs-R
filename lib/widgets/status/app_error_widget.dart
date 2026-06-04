@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 class AppErrorWidget extends StatelessWidget {
   final Function()? onRefresh;
   final String errorMsg;
-  const AppErrorWidget({this.errorMsg = "", this.onRefresh, Key? key})
-      : super(key: key);
+  const AppErrorWidget({this.errorMsg = "", this.onRefresh, super.key});
 
   @override
   Widget build(BuildContext context) {

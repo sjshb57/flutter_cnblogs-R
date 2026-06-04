@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class DebugLogPage extends StatelessWidget {
-  const DebugLogPage({Key? key}) : super(key: key);
+  const DebugLogPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class DebugLogPage extends StatelessWidget {
               var logFile = File(
                   '${dir.path}/${DateTime.now().millisecondsSinceEpoch}.log');
               await logFile.writeAsString(msg);
-              Share.shareXFiles([XFile(logFile.path)]);
+              SharePlus.instance.share(ShareParams(files: [XFile(logFile.path)]));
             },
             icon: const Icon(Icons.save),
           ),

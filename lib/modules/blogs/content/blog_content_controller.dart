@@ -144,7 +144,7 @@ class BlogContentController extends BaseWebViewController {
 
   void share() {
     if (detail == null) return;
-    Share.share('《${detail!.title}》\r\n${detail!.url}');
+    SharePlus.instance.share(ShareParams(text: '《${detail!.title}》\r\n${detail!.url}'));
   }
 
   void openBrowser() {

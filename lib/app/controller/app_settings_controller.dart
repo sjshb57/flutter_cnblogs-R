@@ -42,32 +42,29 @@ class AppSettingsController extends GetxController {
       SimpleDialog(
         title: Text(LocaleKeys.settings_theme.tr),
         children: [
-          RadioListTile<int>(
-            title: Text(LocaleKeys.settings_system_theme.tr),
-            value: 0,
+          RadioGroup<int>(
             groupValue: themeMode.value,
             onChanged: (e) {
               Get.back();
               setTheme(e ?? 0);
             },
-          ),
-          RadioListTile<int>(
-            title: Text(LocaleKeys.settings_light_theme.tr),
-            value: 1,
-            groupValue: themeMode.value,
-            onChanged: (e) {
-              Get.back();
-              setTheme(e ?? 1);
-            },
-          ),
-          RadioListTile<int>(
-            title: Text(LocaleKeys.settings_dark_theme.tr),
-            value: 2,
-            groupValue: themeMode.value,
-            onChanged: (e) {
-              Get.back();
-              setTheme(e ?? 2);
-            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<int>(
+                  title: Text(LocaleKeys.settings_system_theme.tr),
+                  value: 0,
+                ),
+                RadioListTile<int>(
+                  title: Text(LocaleKeys.settings_light_theme.tr),
+                  value: 1,
+                ),
+                RadioListTile<int>(
+                  title: Text(LocaleKeys.settings_dark_theme.tr),
+                  value: 2,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -79,23 +76,25 @@ class AppSettingsController extends GetxController {
       SimpleDialog(
         title: Text(LocaleKeys.settings_language.tr),
         children: [
-          RadioListTile(
-            title: const Text("简体中文"),
-            value: "zh",
+          RadioGroup<String>(
             groupValue: Get.locale?.languageCode ?? "",
             onChanged: (e) {
               Get.back();
-              setLanguage(zhLocale);
+              setLanguage(e == "en" ? enLocale : zhLocale);
             },
-          ),
-          RadioListTile(
-            title: const Text("English"),
-            value: "en",
-            groupValue: Get.locale?.languageCode ?? "",
-            onChanged: (e) {
-              Get.back();
-              setLanguage(enLocale);
-            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                RadioListTile<String>(
+                  title: Text("简体中文"),
+                  value: "zh",
+                ),
+                RadioListTile<String>(
+                  title: Text("English"),
+                  value: "en",
+                ),
+              ],
+            ),
           ),
         ],
       ),

@@ -25,8 +25,8 @@ class PageListView extends StatelessWidget {
     this.showPageLoadding = false,
     this.separatorBuilder,
     this.onLoginSuccess,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

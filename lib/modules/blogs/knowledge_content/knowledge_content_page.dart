@@ -7,7 +7,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 
 class KnowledgeContentPage extends GetView<KnowledgeContentController> {
-  const KnowledgeContentPage({Key? key}) : super(key: key);
+  const KnowledgeContentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class KnowledgeContentPage extends GetView<KnowledgeContentController> {
         children: [
           InAppWebView(
             key: controller.webViewkey,
-            initialOptions: controller.webViewGroupOptions,
+            initialSettings: controller.webViewSettings,
             onWebViewCreated: controller.onWebViewCreated,
             shouldOverrideUrlLoading: controller.shouldOverrideUrlLoading,
           ),

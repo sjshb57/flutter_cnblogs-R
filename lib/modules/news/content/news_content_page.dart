@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:remixicon/remixicon.dart';
 
 class NewsContentPage extends GetView<NewsContentController> {
-  const NewsContentPage({Key? key}) : super(key: key);
+  const NewsContentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class NewsContentPage extends GetView<NewsContentController> {
         children: [
           InAppWebView(
             key: controller.webViewkey,
-            initialOptions: controller.webViewGroupOptions,
+            initialSettings: controller.webViewSettings,
             onWebViewCreated: controller.onWebViewCreated,
             shouldOverrideUrlLoading: controller.shouldOverrideUrlLoading,
           ),

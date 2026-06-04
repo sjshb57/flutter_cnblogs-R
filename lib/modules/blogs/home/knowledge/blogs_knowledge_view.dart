@@ -7,7 +7,7 @@ import 'package:flutter_cnblogs/widgets/page_list_view.dart';
 import 'package:get/get.dart';
 
 class BlogsKnowledgeView extends GetView<BlogsKnowledgeController> {
-  const BlogsKnowledgeView({Key? key}) : super(key: key);
+  const BlogsKnowledgeView({super.key});
 
   @override
   Widget build(BuildContext context) {

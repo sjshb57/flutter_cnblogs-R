@@ -12,8 +12,8 @@ class StatusesContent extends StatelessWidget {
     required this.content,
     this.luckyIndex = 0,
     this.isLucky = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

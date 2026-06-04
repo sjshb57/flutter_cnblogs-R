@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class UserBlogsPage extends StatelessWidget {
   final String blogApp;
-  const UserBlogsPage(this.blogApp, {Key? key}) : super(key: key);
+  const UserBlogsPage(this.blogApp, {super.key});
   UserBlogsController get controller => Get.put(
         UserBlogsController(blogApp),
         tag: blogApp,

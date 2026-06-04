@@ -13,8 +13,7 @@ class StatusesCommentItemWidget extends StatelessWidget {
   final Function()? onReply;
   final Function()? onDelete;
   const StatusesCommentItemWidget(this.item,
-      {this.onReply, this.onDelete, Key? key})
-      : super(key: key);
+      {this.onReply, this.onDelete, super.key});
 
   @override
   Widget build(BuildContext context) {

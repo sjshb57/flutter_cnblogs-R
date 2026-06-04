@@ -20,8 +20,8 @@ class NumberStepDialog extends StatelessWidget {
     this.step = 1,
     this.resetOnMaxOrMin = false,
     this.isUpDownIcon = false,
-    Key? key,
-  }) : super(key: key) {
+    super.key,
+  }) {
     var myValue = value;
     if (value < min) {
       myValue = min;

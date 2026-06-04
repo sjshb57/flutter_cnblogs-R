@@ -21,7 +21,7 @@ class IndexedController extends GetxController {
     const SizedBox(),
   ]);
 
-  void setIndex(i) {
+  void setIndex(int i) {
     if (pages[i] is SizedBox) {
       switch (i) {
         case 1:

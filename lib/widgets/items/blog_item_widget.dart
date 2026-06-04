@@ -11,7 +11,7 @@ import 'package:remixicon/remixicon.dart';
 class BlogItemWidget extends StatelessWidget {
   final BlogListItemModel item;
 
-  const BlogItemWidget(this.item, {Key? key}) : super(key: key);
+  const BlogItemWidget(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'package:flutter_cnblogs/modules/blogs/home/knowledge/blogs_knowledge_vie
 import 'package:get/get.dart';
 
 class BlogsHomePage extends GetView<BlogsHomeController> {
-  const BlogsHomePage({Key? key}) : super(key: key);
+  const BlogsHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

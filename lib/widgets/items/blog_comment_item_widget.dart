@@ -7,7 +7,7 @@ import 'package:flutter_cnblogs/widgets/net_image.dart';
 
 class BlogCommentItemWidget extends StatelessWidget {
   final BlogCommentItemModel item;
-  const BlogCommentItemWidget(this.item, {Key? key}) : super(key: key);
+  const BlogCommentItemWidget(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class BlogCommentItemWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: AppStyle.radius24,
                     border: Border.all(
-                      color: Colors.grey.withOpacity(.2),
+                      color: Colors.grey.withValues(alpha: .2),
                     ),
                   ),
                   child: const Icon(

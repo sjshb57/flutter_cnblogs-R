@@ -6,7 +6,7 @@ import 'package:flutter_cnblogs/modules/search/search_list_view.dart';
 import 'package:get/get.dart';
 
 class SearchPage extends GetView<AppSearchController> {
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,13 @@ class SearchPage extends GetView<AppSearchController> {
             border: OutlineInputBorder(
               borderRadius: AppStyle.radius8,
               borderSide: BorderSide(
-                color: Colors.grey.withOpacity(.2),
+                color: Colors.grey.withValues(alpha: .2),
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: AppStyle.radius8,
               borderSide: BorderSide(
-                color: Colors.grey.withOpacity(.2),
+                color: Colors.grey.withValues(alpha: .2),
               ),
             ),
             contentPadding: EdgeInsets.zero,

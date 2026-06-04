@@ -11,7 +11,7 @@ import 'package:remixicon/remixicon.dart';
 class QuestionItemWidget extends StatelessWidget {
   final QuestionListItemModel item;
 
-  const QuestionItemWidget(this.item, {Key? key}) : super(key: key);
+  const QuestionItemWidget(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class QuestionItemWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: AppStyle.radius4,
                   border: Border.all(
-                    color: Colors.grey.withOpacity(.2),
+                    color: Colors.grey.withValues(alpha: .2),
                   ),
                 ),
                 width: 40,
@@ -163,7 +163,7 @@ class QuestionItemWidget extends StatelessWidget {
                                 (e) => Container(
                                   decoration: BoxDecoration(
                                     borderRadius: AppStyle.radius4,
-                                    color: Colors.grey.withOpacity(.1),
+                                    color: Colors.grey.withValues(alpha: .1),
                                   ),
                                   padding: AppStyle.edgeInsetsH8
                                       .copyWith(top: 4, bottom: 4),

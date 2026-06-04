@@ -65,7 +65,7 @@ class KnowledgeContentController extends BaseWebViewController {
   }
 
   void share() {
-    Share.share('《${item.title}》\r\nhttps://kb.cnblogs.com/page/${item.id}/');
+    SharePlus.instance.share(ShareParams(text: '《${item.title}》\r\nhttps://kb.cnblogs.com/page/${item.id}/'));
   }
 
   void openBrowser() {

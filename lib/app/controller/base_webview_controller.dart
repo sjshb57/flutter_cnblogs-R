@@ -9,11 +9,9 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 class BaseWebViewController extends BaseController {
   final UniqueKey webViewkey = UniqueKey();
   late InAppWebViewController? webViewController;
-  final InAppWebViewGroupOptions webViewGroupOptions = InAppWebViewGroupOptions(
-    crossPlatform: InAppWebViewOptions(
-      transparentBackground: true,
+  final InAppWebViewSettings webViewSettings = InAppWebViewSettings(
+    transparentBackground: true,
       useShouldOverrideUrlLoading: true,
-    ),
   );
   void onWebViewCreated(InAppWebViewController controller) {
     webViewController = controller;

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:remixicon/remixicon.dart';
 
 class IndexedPage extends GetView<IndexedController> {
-  const IndexedPage({Key? key}) : super(key: key);
+  const IndexedPage({super.key});
 
   @override
   Widget build(BuildContext context) {

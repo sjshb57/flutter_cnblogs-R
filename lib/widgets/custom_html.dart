@@ -7,7 +7,7 @@ import 'package:flutter_html/flutter_html.dart';
 
 class CustomHtml extends StatelessWidget {
   final String content;
-  const CustomHtml({required this.content, Key? key}) : super(key: key);
+  const CustomHtml({required this.content, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,9 @@ class CustomHtml extends StatelessWidget {
           builder: (extensionContext) {
             return Container(
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.1),
+                color: Colors.grey.withValues(alpha: .1),
                 borderRadius: AppStyle.radius4,
-                border: Border.all(color: Colors.grey.withOpacity(.2)),
+                border: Border.all(color: Colors.grey.withValues(alpha: .2)),
               ),
               width: double.infinity,
               padding: AppStyle.edgeInsetsA8,

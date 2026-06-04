@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class QuestionsListView extends StatelessWidget {
   final String tag;
-  const QuestionsListView(this.tag, {Key? key}) : super(key: key);
+  const QuestionsListView(this.tag, {super.key});
   QuestionsListController get controller =>
       Get.find<QuestionsListController>(tag: tag);
   @override

@@ -5,7 +5,7 @@ import 'package:flutter_cnblogs/modules/news/home/news_list_view.dart';
 import 'package:get/get.dart';
 
 class NewsHomePage extends GetView<NewsHomeController> {
-  const NewsHomePage({Key? key}) : super(key: key);
+  const NewsHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

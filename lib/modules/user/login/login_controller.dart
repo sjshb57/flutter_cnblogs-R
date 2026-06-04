@@ -11,12 +11,10 @@ class LoginController extends BaseController {
   final UniqueKey webViewkey = UniqueKey();
   final OAuthRequest request = OAuthRequest();
   late InAppWebViewController? webViewController;
-  final InAppWebViewGroupOptions webViewGroupOptions = InAppWebViewGroupOptions(
-    crossPlatform: InAppWebViewOptions(
-      transparentBackground: true,
+  final InAppWebViewSettings webViewSettings = InAppWebViewSettings(
+    transparentBackground: true,
       useShouldOverrideUrlLoading: true,
       clearCache: true,
-    ),
   );
   void onWebViewCreated(InAppWebViewController controller) async {
     webViewController = controller;
@@ -55,11 +53,11 @@ class LoginController extends BaseController {
     pageLoadding.value = false;
   }
 
-  void onLoadError(
-      InAppWebViewController controller, Uri? uri, int code, String e) {
+  void onReceivedError(InAppWebViewController controller,
+      WebResourceRequest request, WebResourceError error) {
     pageLoadding.value = false;
     pageError.value = true;
-    errorMsg.value = "$code $e";
+    errorMsg.value = "${error.type} ${error.description}";
   }
 
   Future<NavigationActionPolicy?> shouldOverrideUrlLoading(

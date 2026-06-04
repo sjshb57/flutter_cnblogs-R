@@ -22,9 +22,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-ext.kotlin_version = '2.1.0'
-
-
 android {
     namespace "com.xycz.cnblogs"
     compileSdk = 36
@@ -72,6 +69,3 @@ flutter {
     source '../..'
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-}

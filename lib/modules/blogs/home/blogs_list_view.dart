@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class BlogsListView extends StatelessWidget {
   final String tag;
-  const BlogsListView(this.tag, {Key? key}) : super(key: key);
+  const BlogsListView(this.tag, {super.key});
   BlogsListController get controller => Get.find<BlogsListController>(tag: tag);
   @override
   Widget build(BuildContext context) {
