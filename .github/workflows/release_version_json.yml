@@ -70,5 +70,5 @@ jobs:
             echo "无变化，跳过提交"
           else
             git commit -m "chore: 更新 new_version.json (${{ github.event.release.tag_name }})"
-            git push
+            git push origin HEAD:master
           fi
