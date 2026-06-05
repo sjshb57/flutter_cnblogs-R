@@ -12,35 +12,46 @@ class LoginController extends BaseController {
   final OAuthRequest request = OAuthRequest();
   late InAppWebViewController? webViewController;
   final InAppWebViewSettings webViewSettings = InAppWebViewSettings(
-    transparentBackground: true,
-      useShouldOverrideUrlLoading: true,
-      clearCache: true,
+    useShouldOverrideUrlLoading: true,
+    // 登录页是 JS 渲染的 SPA，需要 JS / DOM storage / 三方 cookie 才能正常显示与获取验证码
+    javaScriptEnabled: true,
+    domStorageEnabled: true,
+    databaseEnabled: true,
+    thirdPartyCookiesEnabled: true,
+    useHybridComposition: true,
+    // 不用透明背景/不每次清缓存：避免 SPA 出现整页空白
+    transparentBackground: false,
+    clearCache: false,
   );
+  /// 登录授权地址（作为 WebView 的初始请求，避免创建后立刻 loadUrl 导致首次连接失败）
+  URLRequest get initialUrlRequest => URLRequest(
+        url: WebUri(
+          Uri(
+            scheme: "https",
+            host: "oauth.cnblogs.com",
+            path: "connect/authorize",
+            queryParameters: {
+              "client_id": Api.kClientID,
+              "scope": "openid profile CnBlogsApi offline_access",
+              "response_type": "code id_token",
+              "redirect_uri": "https://oauth.cnblogs.com/auth/callback",
+              "state": DateTime.now().millisecondsSinceEpoch.toString(),
+              "nonce": DateTime.now().millisecondsSinceEpoch.toString(),
+            },
+          ).toString(),
+        ),
+      );
+
   void onWebViewCreated(InAppWebViewController controller) async {
     webViewController = controller;
-    pageLoadding.value = true;
-
-    goLogin();
   }
 
   void goLogin() {
-    var uri = Uri(
-      scheme: "https",
-      host: "oauth.cnblogs.com",
-      path: "connect/authorize",
-      queryParameters: {
-        "client_id": Api.kClientID,
-        "scope": "openid profile CnBlogsApi offline_access",
-        "response_type": "code id_token",
-        "redirect_uri": "https://oauth.cnblogs.com/auth/callback",
-        "state": DateTime.now().millisecondsSinceEpoch.toString(),
-        "nonce": DateTime.now().millisecondsSinceEpoch.toString(),
-      },
-    );
-    webViewController?.loadUrl(urlRequest: URLRequest(url: WebUri(uri.toString())));
+    webViewController?.loadUrl(urlRequest: initialUrlRequest);
   }
 
   void refreshWeb() {
+    _retried = false;
     webViewController?.reload();
   }
 
@@ -53,8 +64,19 @@ class LoginController extends BaseController {
     pageLoadding.value = false;
   }
 
+  // 首次加载有时因 WebView 引擎冷启动导致连接被关闭，自动重试一次，避免用户手动刷新
+  bool _retried = false;
+
   void onReceivedError(InAppWebViewController controller,
-      WebResourceRequest request, WebResourceError error) {
+      WebResourceRequest request, WebResourceError error) async {
+    if (!_retried) {
+      _retried = true;
+      pageError.value = false;
+      pageLoadding.value = true;
+      await Future.delayed(const Duration(milliseconds: 500));
+      controller.loadUrl(urlRequest: initialUrlRequest);
+      return;
+    }
     pageLoadding.value = false;
     pageError.value = true;
     errorMsg.value = "${error.type} ${error.description}";

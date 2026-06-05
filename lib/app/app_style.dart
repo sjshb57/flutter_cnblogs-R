@@ -28,6 +28,12 @@ class AppStyle {
       iconTheme: const IconThemeData(color: Colors.white),
       actionsIconTheme: const IconThemeData(color: Colors.white),
       systemOverlayStyle: SystemUiOverlayStyle.light,
+      shape: Border(
+        bottom: BorderSide(
+          color: Colors.white.withValues(alpha: .35),
+          width: 1,
+        ),
+      ),
     ),
     scaffoldBackgroundColor: const Color(0xfffafafa),
     radioTheme: RadioThemeData(
@@ -40,6 +46,7 @@ class AppStyle {
       labelColor: AppColors.lightColorScheme.primary,
       unselectedLabelColor: Colors.white70,
       overlayColor: WidgetStateProperty.all(Colors.transparent),
+      dividerColor: Colors.transparent,
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: RectangularIndicator(
         color: Colors.white,
@@ -56,10 +63,16 @@ class AppStyle {
 
   static ThemeData darkTheme = ThemeData(
     colorScheme: AppColors.darkColorScheme,
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       elevation: 0,
       systemOverlayStyle: SystemUiOverlayStyle.light,
       centerTitle: true,
+      shape: Border(
+        bottom: BorderSide(
+          color: Colors.white.withValues(alpha: .12),
+          width: 1,
+        ),
+      ),
     ),
     radioTheme: RadioThemeData(
       fillColor: WidgetStateProperty.all(AppColors.darkColorScheme.primary),
@@ -71,6 +84,7 @@ class AppStyle {
       labelColor: AppColors.darkColorScheme.primary,
       unselectedLabelColor: Colors.white70,
       overlayColor: WidgetStateProperty.all(Colors.transparent),
+      dividerColor: Colors.transparent,
       indicator: RectangularIndicator(
         color: Colors.white.withValues(alpha: .2),
         topLeftRadius: 8,

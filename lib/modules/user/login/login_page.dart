@@ -21,6 +21,7 @@ class LoginPage extends GetView<LoginController> {
               offstage: controller.pageError.value,
               child: InAppWebView(
                 key: controller.webViewkey,
+                initialUrlRequest: controller.initialUrlRequest,
                 initialSettings: controller.webViewSettings,
                 onWebViewCreated: controller.onWebViewCreated,
                 onLoadStart: controller.onLoadStart,

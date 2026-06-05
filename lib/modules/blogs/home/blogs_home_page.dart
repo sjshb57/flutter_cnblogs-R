@@ -20,7 +20,6 @@ class BlogsHomePage extends GetView<BlogsHomeController> {
           child: TabBar(
             controller: controller.tabController,
             padding: EdgeInsets.zero,
-            dividerColor: Colors.transparent,
             tabs: controller.tabs
                 .map(
                   (e) => Tab(
@@ -40,13 +39,6 @@ class BlogsHomePage extends GetView<BlogsHomeController> {
             icon: const Icon(Icons.search),
           )
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Container(
-            height: 1,
-            color: Colors.white.withValues(alpha: .25),
-          ),
-        ),
       ),
       body: TabBarView(
         controller: controller.tabController,

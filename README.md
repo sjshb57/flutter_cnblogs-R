@@ -1,4 +1,4 @@
-# 博客园 Flutter（R 分支版）
+## 博客园 Flutter
 
 使用 Flutter 编写的博客园（cnblogs）客户端，支持 iOS 及 Android。
 

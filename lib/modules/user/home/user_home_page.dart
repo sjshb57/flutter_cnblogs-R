@@ -35,9 +35,11 @@ class UserHomePage extends GetView<UserHomeController> {
                           context,
                           children: [
                             ListTile(
-                              leading: _buildPhoto(UserService.instance
-                                      .userProfile.value?.avatar ??
-                                  ""),
+                              leading: _buildPhoto(
+                                  context,
+                                  UserService.instance.userProfile.value
+                                          ?.avatar ??
+                                      ""),
                               title: Text(
                                 UserService.instance.userProfile.value
                                         ?.displayName ??
@@ -61,7 +63,7 @@ class UserHomePage extends GetView<UserHomeController> {
                           context,
                           children: [
                             ListTile(
-                              leading: _buildPhoto(""),
+                              leading: _buildPhoto(context, ""),
                               title: Text(
                                 LocaleKeys.user_home_not_login.tr,
                                 style: const TextStyle(height: 1.0),
@@ -170,35 +172,44 @@ class UserHomePage extends GetView<UserHomeController> {
     );
   }
 
-  Widget _buildPhoto(String? photo) {
+  Widget _buildPhoto(BuildContext context, String? photo) {
+    // 白天跟随顶部 tab 栏的藏蓝(primary)，深色沿用之前那个深蓝(primaryContainer)
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color bg = isDark
+        ? AppColors.darkColorScheme.primaryContainer
+        : AppColors.lightColorScheme.primary;
+    final Color fg = isDark
+        ? AppColors.darkColorScheme.onPrimaryContainer
+        : AppColors.lightColorScheme.onPrimary;
+    const double size = 54;
     if (photo == null || photo.isEmpty) {
       return Container(
-        width: 64,
-        height: 64,
-        decoration: const BoxDecoration(
-          color: Colors.lightBlue,
+        width: size,
+        height: size,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: bg,
           shape: BoxShape.circle,
         ),
-        child: const Icon(
+        child: Icon(
           Remix.user_fill,
-          color: Colors.white,
-          size: 30,
+          color: fg,
+          size: 28,
         ),
       );
     }
-    return Container(
-      width: 64,
-      height: 64,
-      padding: const EdgeInsets.all(3),
-      decoration: const BoxDecoration(
-        color: Colors.lightBlue,
-        shape: BoxShape.circle,
-      ),
-      child: NetImage(
-        photo,
-        width: 58,
-        height: 58,
-        borderRadius: 58,
+    // 已登录：固定方形盒 + 圆形裁剪，保证始终是正圆而非椭圆
+    return ClipOval(
+      child: Container(
+        width: size,
+        height: size,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        child: NetImage(
+          photo,
+          width: size,
+          height: size,
+          borderRadius: 0,
+        ),
       ),
     );
   }
